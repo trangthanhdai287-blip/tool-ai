@@ -4,6 +4,7 @@ tool ai cho kali linux
 1. Tải tool về:
    `git clone https://github.com/trangthanhdai287-blip/tool-ai`
 2. Cấp quyền và chạy:
+
    `cd tool-ai`
    
    `chmod +x setup.sh`
