@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # Cấu hình
-MODEL_NAME = "ai-pro"
+MODEL_NAME = "ai-vn"
 LOG_FILE = "ai_agent_history.log"
 
 def log_interaction(prompt, response):
