@@ -18,18 +18,28 @@ else
     echo "[*] Ollama đã được cài đặt."
 fi
 
-# 3. Tải model ai-pro (Giả sử bạn đã có Modelfile trên repo)
+# 3. Tải model Phi 3.5 và tạo model ai-vn
 echo "[*] Đang khởi tạo AI Model..."
-ollama pull tinyllama
-# Tạo model nếu bạn đã có file Modelfile trong cùng thư mục
+ollama pull phi3.5
+
+# Xóa model ai-vn cũ (nếu có) để cập nhật mới
+ollama rm ai-vn 2>/dev/null
+
+# Tạo model ai-vn từ Phi 3.5 thông qua Modelfile_pro
 if [ -f "Modelfile_pro" ]; then
-    ollama create ai-pro -f Modelfile_pro
+    echo "[*] Đang build model ai-vn từ Modelfile_pro..."
+    ollama create ai-vn -f Modelfile_pro
+    echo "[+] Model ai-vn đã sẵn sàng!"
+else
+    echo "[!] Lỗi: File Modelfile_pro không tìm thấy!"
+    exit 1
 fi
 
 # 4. Tạo alias
-echo "alias ai='python3 $(pwd)/ai_agent.py'" >> ~/.bashrc
+echo "[*] Đang cấu hình lệnh 'ai'..."
+echo "alias ai='ollama run ai-vn'" >> ~/.bashrc
 source ~/.bashrc
 
 echo "--- CÀI ĐẶT THÀNH CÔNG ---"
-echo "Bạn có thể gõ lệnh 'ai' ngay bây giờ."
-
+echo "Bạn có thể gõ lệnh 'ai' ngay bây giờ để bắt đầu chat."
+echo "Ngoài ra, dùng: python3 ai_agent.py 'câu hỏi' hoặc python3 ai_agent.py 'đường_dẫn_file'"
