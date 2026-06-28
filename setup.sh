@@ -13,9 +13,10 @@ pip install -r requirements.txt
 
 # Kiểm tra Ollama và tạo model
 if command -v ollama &> /dev/null; then
-    echo "[*] Đang build model ai-vn (TinyLlama)..."
-    ollama pull tinyllama
+    echo "[*] Đang download model Phi 3.5..."
+    ollama pull phi3.5
     ollama rm ai-vn 2>/dev/null
+    echo "[*] Đang build model ai-vn từ Phi 3.5..."
     ollama create ai-vn -f Modelfile_pro
     echo "[+] Model đã sẵn sàng!"
 else
