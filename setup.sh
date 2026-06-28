@@ -1,27 +1,46 @@
 #!/bin/bash
 
-# Kiểm tra nếu chưa có venv thì tạo
+# 1. Kiểm tra nếu chưa có venv thì tạo
 if [ ! -d "venv" ]; then
     echo "[*] Tạo môi trường ảo..."
     python3 -m venv venv
 fi
 
-# Kích hoạt venv và cài đặt thư viện
+# 2. Kích hoạt venv và cài đặt thư viện
 echo "[*] Cài đặt thư viện..."
 source venv/bin/activate
 pip install -r requirements.txt
 
-# Kiểm tra Ollama và tạo model
+# 3. Kiểm tra Ollama và tạo model
 if command -v ollama &> /dev/null; then
     echo "[*] Đang download model Phi 3.5..."
     ollama pull phi3.5
+    
+    # Xóa model ai-vn cũ (nếu có) để cập nhật mới
     ollama rm ai-vn 2>/dev/null
+    
     echo "[*] Đang build model ai-vn từ Phi 3.5..."
     ollama create ai-vn -f Modelfile_pro
-    echo "[+] Model đã sẵn sàng!"
+    echo "[+] Model ai-vn đã sẵn sàng!"
 else
     echo "[!] Lỗi: Bạn chưa cài đặt Ollama. Hãy cài tại https://ollama.com"
     exit 1
 fi
 
-echo "[SUCCESS] Cài đặt hoàn tất! Chạy bằng lệnh: source venv/bin/activate && python3 ai_agent.py"
+# 4. Tự động cấu hình Alias 'ai' vào ~/.zshrc
+echo "[*] Đang cấu hình lệnh 'ai'..."
+if ! grep -q "alias ai=" ~/.zshrc; then
+    echo "alias ai='ollama run ai-vn'" >> ~/.zshrc
+    echo "[+] Đã thêm lệnh 'ai' vào ~/.zshrc"
+else
+    echo "[!] Lệnh 'ai' đã tồn tại trong ~/.zshrc, bỏ qua."
+fi
+
+# 5. Áp dụng thay đổi
+source ~/.zshrc
+
+echo "--------------------------------------------------------"
+echo "[SUCCESS] Cài đặt hoàn tất!"
+echo "- Để chat với AI (phi3.5): Gõ lệnh 'ai'"
+echo "- Để chạy project: 'source venv/bin/activate' và 'python3 ai_agent.py'"
+echo "--------------------------------------------------------"
