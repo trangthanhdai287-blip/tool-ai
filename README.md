@@ -8,3 +8,9 @@ tool ai cho kali linux
    `cd tool-ai`
    `chmod +x setup.sh`
    `./setup.sh`
+## Dùng lệnh 
+1 Mở ai:
+ `ai`
+2 Khi có bản mới dùng lệnh này:
+`cd tool-ai`
+`git pull origin main`
