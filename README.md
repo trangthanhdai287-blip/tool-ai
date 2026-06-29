@@ -15,8 +15,8 @@ tool ai cho kali linux
  
 2 Khi có bản mới dùng lệnh này:
 
-# Hủy các thay đổi cục bộ của tệp bị lỗi
+Hủy các thay đổi cục bộ của tệp bị lỗi
  `git checkout setup.sh`
 
-# Sau đó thực hiện lại lệnh cập nhật
+Sau đó thực hiện lại lệnh cập nhật
 `git pull origin main`
