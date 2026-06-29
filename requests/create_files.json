@@ -1,0 +1,7 @@
+[
+  {"path": "tools/port_scanner.py", "template": "port_scanner"},
+  {"path": "tools/password_generator.py", "template": "password_generator"},
+  {"path": "tools/network_analyzer.py", "template": "network_analyzer"},
+  {"path": "tools/log_analyzer.py", "template": "log_analyzer"},
+  {"path": "tools/automation_framework.py", "template": "automation_framework"}
+]
