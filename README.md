@@ -10,7 +10,13 @@ tool ai cho kali linux
    `./setup.sh`
 ## Dùng lệnh 
 1 Mở ai:
+
  `ai`
+ 
 2 Khi có bản mới dùng lệnh này:
-`cd tool-ai`
+
+# Hủy các thay đổi cục bộ của tệp bị lỗi
+ `git checkout setup.sh`
+
+# Sau đó thực hiện lại lệnh cập nhật
 `git pull origin main`
