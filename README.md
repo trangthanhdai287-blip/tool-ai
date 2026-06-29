@@ -26,4 +26,6 @@ tool ai cho kali linux
 
 `#Sau đó thực hiện lại lệnh cập nhật`
 
+`git stash`
+
 `git pull origin main`
