@@ -6,10 +6,7 @@ tool ai cho kali linux
 2. Cấp quyền và chạy:
 
   `cd tool-ai`
-   
-
  `chmod +x setup.sh`
-
  `./setup.sh`
 ## Dùng lệnh 
 1 Mở ai:
